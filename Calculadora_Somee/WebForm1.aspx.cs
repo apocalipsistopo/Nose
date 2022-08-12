@@ -103,22 +103,26 @@ namespace Calculadora_Somee
 
         protected void Button19_Click(object sender, EventArgs e)
         {
-            operacionmetodo("!");
+            nro1 = Convert.ToDouble(txtLabel.Text);
+            txtLabel.Text = service.factorial(nro1).ToString();
         }
 
         protected void Button21_Click(object sender, EventArgs e)
         {
-            operacionmetodo("Log");
+            nro1 = Convert.ToDouble(txtLabel.Text);
+            txtLabel.Text = service.logaritmo(nro1).ToString();
         }
 
         protected void Button18_Click(object sender, EventArgs e)
         {
-            operacionmetodo("|");
+            nro1 = Convert.ToDouble(txtLabel.Text);
+            txtLabel.Text = service.vabsoluto(nro1).ToString();
         }
 
         protected void Button20_Click(object sender, EventArgs e)
         {
-            operacionmetodo("raiz");
+            nro1 = Convert.ToDouble(txtLabel.Text);
+            txtLabel.Text = service.Raiz(nro1).ToString();
         }
 
         protected void Button22_Click(object sender, EventArgs e)
@@ -148,13 +152,14 @@ namespace Calculadora_Somee
                 Console.WriteLine(txtLabel.Text);
                 nro1 = Convert.ToDouble(txtLabel.Text);
                 operacion = operando;
+               
             }
             else
             {
-                
                 igual(Convert.ToDouble(txtLabel.Text),operando);
             }
             txtLabel.Text = "";
+
 
         }
          private void igual(Double nro2,String signo) {
@@ -167,11 +172,33 @@ namespace Calculadora_Somee
                     }
                 case "-":
                     {
-                        service.Restar(nro1, nro2);
+                        txtLabel.Text = service.Restar(nro1, nro2).ToString();
                         break;
                     }
-                
+                case "x":
+                    {
+                        txtLabel.Text = service.multiplicacion(nro1, nro2).ToString();
+                        break;
+                    }
+                case "/":
+                    {
+                        txtLabel.Text = service.dividir(nro1, nro2).ToString();
+                        break;
+                    }
+                case "%":
+                    {
+                        txtLabel.Text = service.porcentaje(nro1, nro2).ToString();
+                        break;
+                    }
+           
+                case "^":
+                    {
+                        txtLabel.Text = service.PotenciaOperaciones(nro1, nro2).ToString();
+                        break;
+                    }
+
             }
+            nro1 = Convert.ToDouble(txtLabel.Text);
             operacion = signo;
                 
            
